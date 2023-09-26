@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const connection = require('../../database/db');
-const usuarioController = require('../controllers/usarioController');
+const usuarioController = require('../controllers/usuarioController');
+const doctoresController = require('../controllers/doctoresController');
 
 // index
 router.get('/', (req, res) => {
@@ -57,13 +58,30 @@ router.get('/delete-usuario/:IdUsuario', (req, res) => {
 });
 
 // read doctor
-router.get('/doctor', (req, res) => {
-  res.render('doctor');
+router.get('/doctores', (req, res) => {
+  connection.query('SELECT * FROM doctores', (error, results) => {
+    if (error) {
+      throw error;
+    } else {
+      res.render('doctores', { results: results });
+    }
+  });
+});
+
+// create doctores
+router.get('/create-doctores', (req, res) => {
+  res.render('createDoctores');
 });
 
 // read citas
 router.get('/citas', (req, res) => {
-  res.render('citas');
+  connection.query('SELECT * FROM citas', (error, results) => {
+    if (error) {
+      throw error;
+    } else {
+      res.render('citas', { results: results });
+    }
+  });
 });
 
 // Methods for usuario
@@ -71,5 +89,7 @@ router.post('/save-usuario', usuarioController.saveUsuario);
 router.post('/update-usuario', usuarioController.updateUsuario);
 
 // Methods for doctor
+router.post('/save-doctores', doctoresController.saveDoctores);
+router.post('/update-doctores', doctoresController.updateDoctores);
 
 module.exports = router;
