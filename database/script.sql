@@ -12,6 +12,15 @@ CREATE TABLE Usuario(
     Genero SMALLINT
 );
 
+CREATE TABLE Doctores(
+   	IdDoctor int AUTO_INCREMENT PRIMARY KEY,
+    ApellidoUs varchar(20),
+    NombreUs varchar(20),
+    CorreoUs varchar(60),
+    Especialidad varchar(30)
+);
+
+
 CREATE TABLE Citas(
    	IdCitas int AUTO_INCREMENT PRIMARY KEY,
     IdUsuario int,
@@ -20,12 +29,4 @@ CREATE TABLE Citas(
     Lugar varchar(30),
     FOREIGN KEY (IdUsuario) REFERENCES Usuario(IdUsuario),
     FOREIGN KEY (IdDoctor) REFERENCES Doctores(IdDoctor)
-);
-
-CREATE TABLE Doctores(
-   	IdDoctor int AUTO_INCREMENT PRIMARY KEY,
-    ApellidoUs varchar(20),
-    NombreUs varchar(20),
-    CorreoUs varchar(60),
-    Especialidad varchar(30)
 );
