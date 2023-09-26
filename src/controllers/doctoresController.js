@@ -12,7 +12,6 @@ exports.saveDoctores = (req, res) => {
       ApellidoUs: ApellidoUs,
       NombreUs: NombreUs,
       CorreoUs: CorreoUs,
-      Celular: Celular,
       Especialidad: Especialidad,
     },
     (error, results) => {
