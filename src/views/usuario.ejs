@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Asignación de Citas - Usuarios</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/general.css" />
+  </head>
+  <body>
+    <main>
+      <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">Asignación de Citas</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" href="/usuario">Usuarios</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/doctores"
+                  >Doctores</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/citas">Citas</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div class="table-responsive-md ms-5 me-5">
+        <a
+          href="/create-usuario"
+          class="btn btn-block btn-outline-primary mt-4 mb-2 d-block"
+        >
+          <i class="bx bx-plus bx-sm"></i
+        ></a>
+        <table class="table table-hover table-bordered text-center">
+          <thead class="table-primary">
+            <tr class="text-white">
+              <th class="txt-white" scope="col">ID</th>
+              <th class="txt-white" scope="col">Nombre</th>
+              <th class="txt-white" scope="col">Correo</th>
+              <th class="txt-white" scope="col">Celular</th>
+              <th class="txt-white" scope="col">Edad</th>
+              <th class="txt-white" scope="col">Genero</th>
+              <th class="txt-white" scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% results.forEach((usuario) => { %>
+            <tr>
+              <td><%= usuario.IdUsuario %></td>
+              <td><%= usuario.Nombre %></td>
+              <td><%= usuario.Correo %></td>
+              <td><%= usuario.Celular %></td>
+              <td><%= usuario.Edad %></td>
+              <td><%= usuario.Genero %></td>
+              <td>
+                <a
+                  href="/edit-usuario/<%= usuario.IdUsuario %>"
+                  class="btn btn-outline-info"
+                  >Edit</a
+                >
+                <a
+                  href="/delete-usuario/<%=  usuario.IdUsuario %>"
+                  class="btn btn-outline-danger"
+                  >Delete</a
+                >
+              </td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Asignación de Citas - Usuarios</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/general.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Asignación de Citas</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="/usuario">Usuarios</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/doctores"
+                >Doctores</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/citas">Citas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <main>
+      <div class="container mt-4">
+        <div class="card border-secondary">
+          <div class="card-header txt-white">Nuevo Usuario</div>
+          <div class="card-body">
+            <form action="/save-usuario" method="POST">
+              <div class="mb-3">
+                <label for="Usuario" class="form-label">Usuario</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="Nombre"
+                  name="Nombre"
+                  tabindex="1"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="Usuario" class="form-label">Correo</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="Correo"
+                  name="Correo"
+                  tabindex="2"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="Usuario" class="form-label">Celular</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="Celular"
+                  name="Celular"
+                  tabindex="3"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="Usuario" class="form-label">Edad</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="Edad"
+                  name="Edad"
+                  tabindex="4"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="Usuario" class="form-label">Genero</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="Genero"
+                  name="Genero"
+                  tabindex="5"
+                />
+              </div>
+              <button type="submit" class="btn btn-primary" tabindex="6">
+                Guardar
+              </button>
+              <a href="/usuario" class="btn btn-secondary">Cancelar</a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

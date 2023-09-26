@@ -1,0 +1,25 @@
+body {
+  background-color: #e9f8f9 !important;
+  min-height: 100vh;
+}
+
+.bg-baby-blue {
+  background-color: #537fe7 !important;
+}
+
+.bg-baby-blue-tb {
+  background-color: #537fe7 !important;
+  color: white !important;
+}
+
+.txt-white {
+  color: white !important;
+}
+
+td {
+  background-color: white !important;
+}
+
+.no-border {
+  border-color: none !important;
+}
