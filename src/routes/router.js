@@ -73,6 +73,21 @@ router.get('/create-doctores', (req, res) => {
   res.render('createDoctores');
 });
 
+router.get('/delete-doctores/:IdDoctor', (req, res) => {
+  const IdDoctor = req.params.IdDoctor;
+  connection.query(
+    'DELETE FROM doctores WHERE IdDoctor =?',
+    [IdDoctor],
+    (error, results) => {
+      if (error) {
+        throw error;
+      } else {
+        res.redirect('/doctores');
+      }
+    }
+  );
+});
+
 // read citas
 router.get('/citas', (req, res) => {
   connection.query('SELECT * FROM citas', (error, results) => {
