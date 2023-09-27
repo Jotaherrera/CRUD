@@ -49,6 +49,12 @@
         <div class="card-header txt-white">Editar Usuario</div>
         <div class="card-body">
           <form action="/update-usuario" method="POST">
+            <input
+              id="IdUsuario"
+              name="IdUsuario"
+              value="<%= usuario.IdUsuario %>"
+              hidden
+            />
             <div class="mb-3">
               <label for="usuario" class="form-label">Usuario</label>
               <input
