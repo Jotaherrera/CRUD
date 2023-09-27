@@ -26,13 +26,13 @@ exports.saveDoctores = (req, res) => {
 
 // update doctores
 exports.updateDoctores = (req, res) => {
-  const IdDoctores = req.body.IdDoctores;
+  const IdDoctor = req.body.IdDoctor;
   const ApellidoUs = req.body.ApellidoUs;
   const NombreUs = req.body.NombreUs;
   const CorreoUs = req.body.CorreoUs;
   const Especialidad = req.body.Especialidad;
   connection.query(
-    'UPDATE doctores SET ? WHERE IdDoctores= ?',
+    'UPDATE doctores SET ? WHERE IdDoctor= ?',
     [
       {
         ApellidoUs: ApellidoUs,
@@ -40,7 +40,7 @@ exports.updateDoctores = (req, res) => {
         CorreoUs: CorreoUs,
         Especialidad: Especialidad,
       },
-      IdDoctores,
+      IdDoctor,
     ],
     (error, results) => {
       if (error) {

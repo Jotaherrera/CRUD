@@ -29,7 +29,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" href="/Doctores">Doctoress</a>
+              <a class="nav-link" href="/usuario">Usuarios</a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="/doctores"
@@ -49,6 +49,12 @@
         <div class="card-header txt-white">Editar Doctor</div>
         <div class="card-body">
           <form action="/update-doctores" method="POST">
+            <input
+              id="IdDoctor"
+              name="IdDoctor"
+              value="<%= doctores.IdDoctor %>"
+              hidden
+            />
             <div class="mb-3">
               <label for="doctores" class="form-label">Nombre</label>
               <input

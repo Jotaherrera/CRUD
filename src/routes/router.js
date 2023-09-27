@@ -73,7 +73,7 @@ router.get('/create-doctores', (req, res) => {
   res.render('createDoctores');
 });
 
-// edito doctores
+// edit doctores
 router.get('/edit-doctor/:IdDoctor', (req, res) => {
   const IdDoctor = req.params.IdDoctor;
   connection.query(
