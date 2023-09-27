@@ -73,6 +73,23 @@ router.get('/create-doctores', (req, res) => {
   res.render('createDoctores');
 });
 
+// edito doctores
+router.get('/edit-doctor/:IdDoctor', (req, res) => {
+  const IdDoctor = req.params.IdDoctor;
+  connection.query(
+    'SELECT * FROM doctores WHERE IdDoctor =?',
+    [IdDoctor],
+    (error, results) => {
+      if (error) {
+        throw error;
+      } else {
+        res.render('editDoctores', { doctores: results[0] });
+      }
+    }
+  );
+});
+
+// delete doctor
 router.get('/delete-doctores/:IdDoctor', (req, res) => {
   const IdDoctor = req.params.IdDoctor;
   connection.query(
