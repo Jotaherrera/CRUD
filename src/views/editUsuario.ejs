@@ -49,12 +49,6 @@
         <div class="card-header txt-white">Editar Usuario</div>
         <div class="card-body">
           <form action="/update-usuario" method="POST">
-            <input
-              id="IdUsuario"
-              name="IdUsuario"
-              value="<%= usuario.IdUsuario %>"
-              hidden
-            />
             <div class="mb-3">
               <label for="usuario" class="form-label">Usuario</label>
               <input
@@ -67,7 +61,7 @@
               />
             </div>
             <div class="mb-3">
-              <label for="zapatos" class="form-label">Correo</label>
+              <label for="usuario" class="form-label">Correo</label>
               <input
                 type="email"
                 class="form-control"
@@ -78,7 +72,7 @@
               />
             </div>
             <div class="mb-3">
-              <label for="zapatos" class="form-label">Celular</label>
+              <label for="usuario" class="form-label">Celular</label>
               <input
                 type="number"
                 class="form-control"
@@ -89,7 +83,7 @@
               />
             </div>
             <div class="mb-3">
-              <label for="zapatos" class="form-label">Edad</label>
+              <label for="usuario" class="form-label">Edad</label>
               <input
                 type="number"
                 class="form-control"
@@ -100,7 +94,7 @@
               />
             </div>
             <div class="mb-3">
-              <label for="zapatos" class="form-label">Genero</label>
+              <label for="usuario" class="form-label">Genero</label>
               <input
                 type="number"
                 class="form-control"
@@ -113,7 +107,7 @@
             <button type="submit" class="btn btn-primary" tabindex="6">
               Guardar
             </button>
-            <a href="/" class="btn btn-secondary">Cancelar</a>
+            <a href="/usuario" class="btn btn-secondary">Cancelar</a>
           </form>
         </div>
       </div>
