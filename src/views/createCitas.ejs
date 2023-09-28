@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Asignación de Citas - Citas</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/general.css" />
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Asignación de Citas</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="/usuario">Usuarios</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/doctores"
+                >Doctores</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/citas">Citas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <main>
+      <div class="container mt-4">
+        <div class="card border-secondary">
+          <div class="card-header txt-white">Nueva Cita</div>
+          <div class="card-body">
+            <% const data = locals.data; %> <% const doctores = data.doctores;
+            %> <% const usuario = data.usuario; %>
+            <form action="/save-citas" method="POST">
+              <div class="mb-3">
+                <label for="citas" class="form-label">Usuario</label>
+                <select
+                  class="form-select"
+                  name="IdUsuario"
+                  id="IdUsuario"
+                  tabindex="2"
+                >
+                  <option value="" disabled selected>
+                    Selecciona un usuario
+                  </option>
+                  <% usuario.forEach(usuario => { %>
+                  <option value="<%= usuario.IdUsuario %>">
+                    <%= usuario.IdUsuario %> - <%= usuario.Nombre %>
+                  </option>
+                  <% }); %>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label for="citas" class="form-label">Doctor</label>
+                <select
+                  class="form-select"
+                  name="IdDoctor"
+                  id="IdDoctor"
+                  tabindex="2"
+                >
+                  <option value="" disabled selected>
+                    Selecciona un doctor
+                  </option>
+                  <% doctores.forEach(doctor => { %>
+                  <option value="<%= doctor.IdDoctor %>">
+                    <%= doctor.IdDoctor %> - <%= doctor.NombreUs %> <%=
+                    doctor.ApellidoUs %>
+                  </option>
+                  <% }); %>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="citas" class="form-label">Fecha</label>
+                <input
+                  type="datetime-local"
+                  class="form-control"
+                  id="FechaCita"
+                  name="FechaCita"
+                  tabindex="3"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="citas" class="form-label">Lugar</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="Lugar"
+                  name="Lugar"
+                  tabindex="4"
+                />
+              </div>
+              <button type="submit" class="btn btn-primary" tabindex="6">
+                Guardar
+              </button>
+              <a href="/citas" class="btn btn-secondary">Cancelar</a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

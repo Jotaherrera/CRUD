@@ -3,6 +3,7 @@ const router = express.Router();
 const connection = require('../../database/db');
 const usuarioController = require('../controllers/usuarioController');
 const doctoresController = require('../controllers/doctoresController');
+const citasController = require('../controllers/citasController');
 
 // index
 router.get('/', (req, res) => {
@@ -57,7 +58,7 @@ router.get('/delete-usuario/:IdUsuario', (req, res) => {
   );
 });
 
-// read doctor
+// read doctores
 router.get('/doctores', (req, res) => {
   connection.query('SELECT * FROM doctores', (error, results) => {
     if (error) {
@@ -116,6 +117,80 @@ router.get('/citas', (req, res) => {
   });
 });
 
+router.get('/create-citas', (req, res) => {
+  connection.query('SELECT * FROM doctores', (errorDoctores, doctores) => {
+    if (errorDoctores) {
+      throw errorDoctores;
+    } else {
+      connection.query('SELECT * FROM usuario', (errorUsuarios, usuario) => {
+        if (errorUsuarios) {
+          throw errorUsuarios;
+        } else {
+          console.log(doctores);
+          console.log(usuario);
+          res.render('createCitas', {
+            data: { doctores: doctores, usuario: usuario },
+          });
+        }
+      });
+    }
+  });
+});
+
+// edit citas (unfinished)
+router.get('/edit-citas/:IdCitas', (req, res) => {
+  const IdCitas = req.params.IdCitas;
+  connection.query(
+    'SELECT * FROM citas WHERE IdCitas = ?',
+    [IdCitas],
+    (error, results) => {
+      if (error) {
+        throw error;
+      } else {
+        const citas = results[0];
+        connection.query('SELECT * FROM usuario', (errorUsuario, usuario) => {
+          if (errorUsuario) {
+            throw errorUsuario;
+          } else {
+            connection.query(
+              'SELECT * FROM doctores',
+              (errorDoctor, doctores) => {
+                if (errorDoctor) {
+                  throw errorDoctor;
+                } else {
+                  res.render('editCitas', {
+                    data: {
+                      citas: citas,
+                      usuario: usuario,
+                      doctores: doctores,
+                    },
+                  });
+                }
+              }
+            );
+          }
+        });
+      }
+    }
+  );
+});
+
+// delete citas
+router.get('/delete-citas/:IdCitas', (req, res) => {
+  const IdCitas = req.params.IdCitas;
+  connection.query(
+    'DELETE FROM citas WHERE IdCitas =?',
+    [IdCitas],
+    (error, results) => {
+      if (error) {
+        throw error;
+      } else {
+        res.redirect('/citas');
+      }
+    }
+  );
+});
+
 // Methods for usuario
 router.post('/save-usuario', usuarioController.saveUsuario);
 router.post('/update-usuario', usuarioController.updateUsuario);
@@ -123,5 +198,9 @@ router.post('/update-usuario', usuarioController.updateUsuario);
 // Methods for doctor
 router.post('/save-doctores', doctoresController.saveDoctores);
 router.post('/update-doctores', doctoresController.updateDoctores);
+
+// Methods for citas
+router.post('/save-citas', citasController.saveCitas);
+router.post('/update-citas', citasController.updateCitas);
 
 module.exports = router;
