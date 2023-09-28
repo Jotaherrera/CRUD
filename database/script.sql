@@ -25,8 +25,8 @@ CREATE TABLE Citas(
    	IdCitas int AUTO_INCREMENT PRIMARY KEY,
     IdUsuario int,
     IdDoctor int,
-    FechaCita date,
+    FechaCita datetime,
     Lugar varchar(30),
-    FOREIGN KEY (IdUsuario) REFERENCES Usuario(IdUsuario),
-    FOREIGN KEY (IdDoctor) REFERENCES Doctores(IdDoctor)
+    FOREIGN KEY (IdUsuario) REFERENCES Usuario(IdUsuario) ON DELETE CASCADE,
+    FOREIGN KEY (IdDoctor) REFERENCES Doctores(IdDoctor) ON DELETE CASCADE
 );
